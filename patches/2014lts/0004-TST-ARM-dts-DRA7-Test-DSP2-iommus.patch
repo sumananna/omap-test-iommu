@@ -1,0 +1,39 @@
+From 2e79e7a5f537935337acba69a880285f471a7f6c Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Wed, 20 Aug 2014 19:37:24 -0500
+Subject: [PATCH 4/4] TST: ARM: dts: DRA7: Test DSP2 iommus
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/dra7.dtsi   | 2 +-
+ arch/arm/boot/dts/dra74x.dtsi | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/dra7.dtsi b/arch/arm/boot/dts/dra7.dtsi
+index cc1f248..d54ab13 100644
+--- a/arch/arm/boot/dts/dra7.dtsi
++++ b/arch/arm/boot/dts/dra7.dtsi
+@@ -1103,7 +1103,7 @@
+ 		};
+ 	};
+ 
+-	iommu_test {
++	iommu_test: iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+ 		/*iommus = <&mmu_ipu1>;*/
+ 		/*iommus = <&mmu_ipu2>;*/
+diff --git a/arch/arm/boot/dts/dra74x.dtsi b/arch/arm/boot/dts/dra74x.dtsi
+index 390dd68..59deaca 100644
+--- a/arch/arm/boot/dts/dra74x.dtsi
++++ b/arch/arm/boot/dts/dra74x.dtsi
+@@ -59,3 +59,7 @@
+ 		};
+ 	};
+ };
++
++&iommu_test {
++	iommus = <&mmu0_dsp2>, <&mmu1_dsp2>;
++};
+-- 
+2.1.0
+

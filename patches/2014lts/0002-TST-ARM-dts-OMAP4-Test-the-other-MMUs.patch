@@ -1,0 +1,60 @@
+From fffc2f26428ca53bd617abab1513ece6f494aa53 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Wed, 20 Aug 2014 19:24:21 -0500
+Subject: [PATCH 2/4] TST: ARM: dts: OMAP4+: Test the other MMUs
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/dra7.dtsi  | 4 ++--
+ arch/arm/boot/dts/omap4.dtsi | 4 ++--
+ arch/arm/boot/dts/omap5.dtsi | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm/boot/dts/dra7.dtsi b/arch/arm/boot/dts/dra7.dtsi
+index f517bf2..f87fd59 100644
+--- a/arch/arm/boot/dts/dra7.dtsi
++++ b/arch/arm/boot/dts/dra7.dtsi
+@@ -1105,8 +1105,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_ipu1>;
+-		/*iommus = <&mmu_ipu2>;*/
++		/*iommus = <&mmu_ipu1>;*/
++		iommus = <&mmu_ipu2>;
+ 		/*iommus = <&mmu0_dsp1>, <&mmu1_dsp1>;*/
+ 		/*iommus = <&mmu0_dsp2>, <&mmu1_dsp2>;*/
+ 	};
+diff --git a/arch/arm/boot/dts/omap4.dtsi b/arch/arm/boot/dts/omap4.dtsi
+index 78778bf..289d9034 100644
+--- a/arch/arm/boot/dts/omap4.dtsi
++++ b/arch/arm/boot/dts/omap4.dtsi
+@@ -929,8 +929,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_dsp>;
+-		/*iommus = <&mmu_ipu>;*/
++		/*iommus = <&mmu_dsp>;*/
++		iommus = <&mmu_ipu>;
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/omap5.dtsi b/arch/arm/boot/dts/omap5.dtsi
+index ef2c1e7..a54cc02 100644
+--- a/arch/arm/boot/dts/omap5.dtsi
++++ b/arch/arm/boot/dts/omap5.dtsi
+@@ -983,8 +983,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_ipu>;
+-		/*iommus = <&mmu_dsp>;*/
++		/*iommus = <&mmu_ipu>;*/
++		iommus = <&mmu_dsp>;
+ 	};
+ };
+ 
+-- 
+2.1.0
+
