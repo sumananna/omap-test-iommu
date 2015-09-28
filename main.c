@@ -32,7 +32,7 @@ static struct iommu_domain *domain;
 static int iommu_fault(struct iommu_domain *domain, struct device *dev,
 			unsigned long iova, int flags, void *token)
 {
-	dev_err(dev, "iommu fault: da 0x%x flags 0x%x\n", iova, flags);
+	dev_err(dev, "iommu fault: da 0x%lux flags 0x%x\n", iova, flags);
 
 	/*
 	 * Let the iommu core know we're not really handling this fault;
