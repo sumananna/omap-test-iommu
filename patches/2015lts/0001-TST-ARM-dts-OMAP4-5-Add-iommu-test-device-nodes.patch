@@ -1,0 +1,53 @@
+From 406bd1a9870eb493c45b4ceaa010f30a4bf913ef Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Tue, 15 Jul 2014 16:55:10 -0500
+Subject: [PATCH 1/2] TST: ARM: dts: OMAP4/5: Add iommu test device nodes
+
+Add a iommu test device node on all devices newer than OMAP4
+(OMAP4, OMAP5 and DRA7) for testing. This device node will
+probe a test driver which allows us to perform a iommu unit
+test.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/omap4.dtsi | 6 ++++++
+ arch/arm/boot/dts/omap5.dtsi | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/omap4.dtsi b/arch/arm/boot/dts/omap4.dtsi
+index f884d6adb71e..c442eb242d2f 100644
+--- a/arch/arm/boot/dts/omap4.dtsi
++++ b/arch/arm/boot/dts/omap4.dtsi
+@@ -1004,6 +1004,12 @@
+ 			};
+ 		};
+ 	};
++
++	iommu_test {
++		compatible = "ti,omap-iommu-test";
++		iommus = <&mmu_dsp>;
++		/*iommus = <&mmu_ipu>;*/
++	};
+ };
+ 
+ /include/ "omap44xx-clocks.dtsi"
+diff --git a/arch/arm/boot/dts/omap5.dtsi b/arch/arm/boot/dts/omap5.dtsi
+index 7d24ae0306b5..0afbbe5ce182 100644
+--- a/arch/arm/boot/dts/omap5.dtsi
++++ b/arch/arm/boot/dts/omap5.dtsi
+@@ -1127,6 +1127,12 @@
+ 			>;
+ 		};
+ 	};
++
++	iommu_test {
++		compatible = "ti,omap-iommu-test";
++		iommus = <&mmu_ipu>;
++		/*iommus = <&mmu_dsp>;*/
++	};
+ };
+ 
+ &cpu_thermal {
+-- 
+2.4.4
+
