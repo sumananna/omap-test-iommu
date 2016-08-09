@@ -41,6 +41,12 @@ module_param(len, int, 0);
 
 static struct iommu_domain *domain;
 
+/* define locally to build */
+struct omap_iommu_arch_data {
+        const char *name;
+        struct omap_iommu *iommu_dev;
+};
+
 static int omap_iommu_test_fault(struct iommu_domain *domain, struct device *dev,
 				 unsigned long iova, int flags, void *token)
 {
