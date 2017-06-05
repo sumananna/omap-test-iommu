@@ -42,10 +42,10 @@ module_param(len, int, 0);
 static struct iommu_domain *domain;
 
 /* define locally to build */
-struct omap_iommu_arch_data {
+/*struct omap_iommu_arch_data {
         const char *name;
         struct omap_iommu *iommu_dev;
-};
+};*/
 
 static int omap_iommu_test_fault(struct iommu_domain *domain, struct device *dev,
 				 unsigned long iova, int flags, void *token)
@@ -67,6 +67,7 @@ static void omap_iommu_test_cleanup(struct platform_device *pdev)
 	if (dev && domain) {
 		iommu_detach_device(domain, dev);
 		iommu_domain_free(domain);
+		/*iommu_group_remove_device(dev);*/
 		pr_info("%s: detached device and freed domain\n", __func__);
 	}
 }
@@ -77,6 +78,7 @@ static int omap_iommu_test_init(struct platform_device *pdev)
 	struct device *dev = &pdev->dev;
 	const char *obj_name, *device_name;
 	struct omap_iommu_arch_data *arch_data;
+	/*struct iommu_group *group;*/
 
 	pr_info("%s: iommu_test_init entered\n", __func__);
 
@@ -88,9 +90,23 @@ static int omap_iommu_test_init(struct platform_device *pdev)
 	/* Enable IOMMU:  */
 	dev_info(dev, "Enabling IOMMU...\n");
 	if (!iommu_present(dev->bus)) {
-		dev_dbg(dev, "iommu not found\n");
+		dev_err(dev, "iommu not found\n");
 		return ret;
 	}
+
+	/* Create a device group and add the device to it. */
+	/*group = iommu_group_alloc();
+	if (IS_ERR(group)) {
+		dev_err(dev, "failed to allocate IOMMU group\n");
+		return PTR_ERR(group);
+	}
+
+	ret = iommu_group_add_device(group, dev);
+	iommu_group_put(group);
+	if (ret < 0) {
+		dev_err(dev, "failed to add device to IOMMU group\n");
+		return ret;
+	}*/
 
 	domain = iommu_domain_alloc(dev->bus);
 	if (!domain) {
@@ -101,7 +117,7 @@ static int omap_iommu_test_init(struct platform_device *pdev)
 	iommu_set_fault_handler(domain, omap_iommu_test_fault, NULL);
 
 	arch_data = dev->archdata.iommu;
-	if (!arch_data || !arch_data->name) {
+	if (!arch_data) {
 		dev_err(dev, "test device node does not have iommus property set\n");
 		return -EINVAL;
 	}
@@ -115,7 +131,7 @@ static int omap_iommu_test_init(struct platform_device *pdev)
 	device_name = dev_name(dev);
 	dev_info(dev, "dev->of_node->name: %s dev_name %s\n", obj_name, device_name);
 
-	dev_info(dev, "testing IOMMU %s\n", arch_data->name);
+	/*dev_info(dev, "testing IOMMU %s\n", arch_data->name);*/
 
 	ret = iommu_attach_device(domain, dev);
 	if (ret) {
