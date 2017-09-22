@@ -1,11 +1,11 @@
-# LCPD Kernels
-#KERNELDIR=/home/suman/projects/lcpd/kernels/ti-linux-kernel
-#KERNELDIR=/home/suman/projects/lcpd/kernels/lcpd-rpmsg
-
 # Upstream Kernels
-KERNELDIR=/home/suman/projects/opensrc/kernels/linux
-#KERNELDIR=/home/suman/projects/opensrc/kernels/linux-next
-#KERNELDIR=/home/suman/projects/opensrc/kernels/linux-stable
+KERNELDIR ?= /home/suman/projects/opensrc/kernels/linux
+#KERNELDIR ?= /home/suman/projects/opensrc/kernels/linux-next
+#KERNELDIR ?= /home/suman/projects/opensrc/kernels/linux-stable
+
+# LCPD Kernels
+#KERNELDIR ?= /home/suman/projects/lcpd/kernels/ti-4.9
+#KERNELDIR ?= /home/suman/projects/lcpd/kernels/lcpd-rpmsg/iommu-4.4
 
 #obj-m = iommu_dt_test.o iommu_test.o
 obj-m = iommu_dt_test.o
