@@ -6,9 +6,10 @@ KERNELDIR ?= /home/suman/projects/opensrc/kernels/linux
 # LCPD Kernels
 #KERNELDIR ?= /home/suman/projects/lcpd/kernels/ti-4.9
 #KERNELDIR ?= /home/suman/projects/lcpd/kernels/lcpd-rpmsg/iommu-4.4
+#KERNELDIR ?= /home/suman/projects/lcpd/kernels/lcpd-rpmsg/test-4.9
 
 #obj-m = iommu_dt_test.o iommu_test.o
-obj-m = iommu_dt_test.o
+obj-m = iommu_dt_test.o iommu_dma_test.o
 iommu_dt_test-objs = main_dt.o
 #iommu_test-objs = main.o
 
