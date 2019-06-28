@@ -1,0 +1,36 @@
+From 6f56361e9458dd680acc3e5cb74839549886373d Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Tue, 15 Sep 2015 17:30:48 -0500
+Subject: [PATCH 2/8] TST: ARM: dts: OMAP3: Test IVA MMU node
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/omap3.dtsi | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm/boot/dts/omap3.dtsi b/arch/arm/boot/dts/omap3.dtsi
+index bdc21923aad6..1c496f1ace25 100644
+--- a/arch/arm/boot/dts/omap3.dtsi
++++ b/arch/arm/boot/dts/omap3.dtsi
+@@ -475,7 +475,6 @@
+ 			reg = <0x5d000000 0x80>;
+ 			interrupts = <28>;
+ 			ti,hwmods = "mmu_iva";
+-			status = "disabled";
+ 		};
+ 
+ 		wdt2: wdt@48314000 {
+@@ -838,8 +837,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_isp>;
+-		/*iommus = <&mmu_iva>;*/
++		/*iommus = <&mmu_isp>;*/
++		iommus = <&mmu_iva>;
+ 	};
+ };
+ 
+-- 
+2.22.0
+

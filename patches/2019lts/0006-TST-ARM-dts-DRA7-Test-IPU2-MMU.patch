@@ -1,0 +1,28 @@
+From 8c0a2d82c39a838291b66a33862575abcb9fd855 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Wed, 20 Aug 2014 19:24:21 -0500
+Subject: [PATCH 6/8] TST: ARM: dts: DRA7: Test IPU2 MMU
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/dra7.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/dra7.dtsi b/arch/arm/boot/dts/dra7.dtsi
+index db1ff4d20fc2..00ffce3a66ee 100644
+--- a/arch/arm/boot/dts/dra7.dtsi
++++ b/arch/arm/boot/dts/dra7.dtsi
+@@ -2117,8 +2117,8 @@
+ 
+ 	iommu_test: iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_ipu1>;
+-		/*iommus = <&mmu_ipu2>;*/
++		/*iommus = <&mmu_ipu1>;*/
++		iommus = <&mmu_ipu2>;
+ 		/*iommus = <&mmu0_dsp1>, <&mmu1_dsp1>;*/
+ 		/*iommus = <&mmu0_dsp2>, <&mmu1_dsp2>;*/
+ 	};
+-- 
+2.22.0
+

@@ -1,0 +1,25 @@
+From 9b3117d6e57fe584063b8b3b67622d752819dbb5 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Thu, 10 Mar 2016 14:07:09 -0600
+Subject: [PATCH 8/8] TST: ARM: dts: DRA7: Test DSP2 iommus
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/dra74x.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/dra74x.dtsi b/arch/arm/boot/dts/dra74x.dtsi
+index f1a759e6ef3d..3a52cbe9fdca 100644
+--- a/arch/arm/boot/dts/dra74x.dtsi
++++ b/arch/arm/boot/dts/dra74x.dtsi
+@@ -144,3 +144,7 @@
+ &pcie2_rc {
+ 	compatible = "ti,dra746-pcie-rc", "ti,dra7-pcie";
+ };
++
++&iommu_test {
++	iommus = <&mmu0_dsp2>, <&mmu1_dsp2>;
++};
+-- 
+2.22.0
+

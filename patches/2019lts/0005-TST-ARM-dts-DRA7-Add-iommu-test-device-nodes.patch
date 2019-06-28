@@ -1,0 +1,37 @@
+From 1cd3ef127d10bf73dedb36afed56c46c3ab23285 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Thu, 10 Mar 2016 14:05:16 -0600
+Subject: [PATCH 5/8] TST: ARM: dts: DRA7: Add iommu test device nodes
+
+Add a iommu test device node on all DRA7 SoCs for testing.
+This device node will probe a test driver which allows us
+to perform a iommu unit test.
+
+This patch currently tests IPU1 MMU.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/dra7.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm/boot/dts/dra7.dtsi b/arch/arm/boot/dts/dra7.dtsi
+index 41d4977b452a..db1ff4d20fc2 100644
+--- a/arch/arm/boot/dts/dra7.dtsi
++++ b/arch/arm/boot/dts/dra7.dtsi
+@@ -2115,6 +2115,13 @@
+ 		#include "dra7-iva-thermal.dtsi"
+ 	};
+ 
++	iommu_test: iommu_test {
++		compatible = "ti,omap-iommu-test";
++		iommus = <&mmu_ipu1>;
++		/*iommus = <&mmu_ipu2>;*/
++		/*iommus = <&mmu0_dsp1>, <&mmu1_dsp1>;*/
++		/*iommus = <&mmu0_dsp2>, <&mmu1_dsp2>;*/
++	};
+ };
+ 
+ &cpu_thermal {
+-- 
+2.22.0
+

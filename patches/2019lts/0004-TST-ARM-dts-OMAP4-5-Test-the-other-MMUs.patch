@@ -1,0 +1,47 @@
+From c095efbd2271584028f5359dd6504db4b2bddbdb Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Wed, 20 Aug 2014 19:24:21 -0500
+Subject: [PATCH 4/8] TST: ARM: dts: OMAP4/5: Test the other MMUs
+
+Disable the DSP MMU devices and enable the IPU MMU devices
+for testing.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ arch/arm/boot/dts/omap4.dtsi | 4 ++--
+ arch/arm/boot/dts/omap5.dtsi | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/omap4.dtsi b/arch/arm/boot/dts/omap4.dtsi
+index c4efb9c65bfd..5f00b248c834 100644
+--- a/arch/arm/boot/dts/omap4.dtsi
++++ b/arch/arm/boot/dts/omap4.dtsi
+@@ -629,8 +629,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_dsp>;
+-		/*iommus = <&mmu_ipu>;*/
++		/*iommus = <&mmu_dsp>;*/
++		iommus = <&mmu_ipu>;
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/omap5.dtsi b/arch/arm/boot/dts/omap5.dtsi
+index d5fcf08acdfd..81f6ed6d771c 100644
+--- a/arch/arm/boot/dts/omap5.dtsi
++++ b/arch/arm/boot/dts/omap5.dtsi
+@@ -1180,8 +1180,8 @@
+ 
+ 	iommu_test {
+ 		compatible = "ti,omap-iommu-test";
+-		iommus = <&mmu_dsp>;
+-		/*iommus = <&mmu_ipu>;*/
++		/*iommus = <&mmu_dsp>;*/
++		iommus = <&mmu_ipu>;
+ 	};
+ };
+ 
+-- 
+2.22.0
+
