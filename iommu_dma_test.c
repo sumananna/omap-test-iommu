@@ -81,13 +81,13 @@ static void omap_iommu_dma_test_cleanup(struct platform_device *pdev)
 	int i;
 	struct test_device *tdev = platform_get_drvdata(pdev);
 
-	pr_info("%s: entered %p\n", __func__, tdev);
+	pr_info("%s: entered %pK\n", __func__, tdev);
 
 	count = count > 10 ? 10 : count;
 	for (i = 0; i < count; i++) {
 		dma_free_coherent(tdev->dev, len, tdev->addr[i],
 				  tdev->dma_addr[i]);
-		dev_info(tdev->dev, "%d: Freed addr %p of size 0x%x, dma_addr = %pad\n",
+		dev_info(tdev->dev, "%d: Freed addr %pK of size 0x%x, dma_addr = %pad\n",
 			 i, tdev->addr[i], len, &tdev->dma_addr[i]);
 		tdev->addr[i] = NULL;
 		tdev->dma_addr[i] = 0;
@@ -146,7 +146,7 @@ static int omap_iommu_dma_test_init(struct platform_device *pdev)
 				i, len);
 			break;
 		}
-		dev_info(dev, "%d: Allocated size 0x%x at addr %p, dma_addr = %pad\n",
+		dev_info(dev, "%d: Allocated size 0x%x at addr %pK, dma_addr = %pad\n",
 			 i, len, tdev->addr[i], &tdev->dma_addr[i]);
 	}
 	if (ret)
